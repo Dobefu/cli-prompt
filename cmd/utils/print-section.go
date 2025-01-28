@@ -13,8 +13,8 @@ const bracketClose = ""
 func PrintSection(content string, fg structs.ColorRGB, bg structs.ColorRGB) {
 	fmt.Printf(
 		"%s%s%s",
-		color.RGB(fg.R, fg.G, fg.B).Sprint(bracketOpen),
-		color.RGB(bg.R, bg.G, bg.B).AddBgRGB(fg.R, fg.G, fg.B).Sprint(content),
-		color.RGB(fg.R, fg.G, fg.B).Sprint(bracketClose),
+		color.RGB(bg.R, bg.G, bg.B).Sprint(bracketOpen),
+		color.RGB(fg.R, fg.G, fg.B).AddBgRGB(bg.R, bg.G, bg.B).Sprint(content),
+		color.RGB(bg.R, bg.G, bg.B).Sprint(bracketClose),
 	)
 }
