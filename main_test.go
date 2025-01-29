@@ -16,5 +16,8 @@ func setupMainTest() (cleanup func()) {
 }
 
 func TestMain(t *testing.T) {
+	cleanup := setupMainTest()
+	defer cleanup()
+
 	assert.NotPanics(t, func() { main() })
 }
