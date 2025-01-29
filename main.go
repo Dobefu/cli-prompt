@@ -21,7 +21,7 @@ func main() {
 			structs.ColorRGB{R: 200, G: 200, B: 200},
 		},
 		{
-			utils.GetPath(),
+			utils.GetCwd(),
 			structs.ColorRGB{R: 255, G: 255, B: 255},
 			structs.ColorRGB{R: 0, G: 0, B: 200},
 		},

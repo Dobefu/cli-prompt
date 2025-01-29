@@ -4,14 +4,14 @@ import (
 	"fmt"
 )
 
-const pathIcon = ""
+const dirIcon = ""
 
-func GetPath() string {
+func GetCwd() string {
 	path, err := osGetwd()
 
 	if err != nil {
 		return "‼"
 	}
 
-	return fmt.Sprintf("%s %s", pathIcon, path)
+	return fmt.Sprintf("%s %s", dirIcon, path)
 }
