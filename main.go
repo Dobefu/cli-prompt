@@ -30,12 +30,14 @@ func main() {
 	numSections := len(sections)
 
 	for i := 0; i < numSections; i++ {
-		utils.PrintSection(sections[i].content, sections[i].fg, sections[i].bg)
+		section := utils.SprintSection(sections[i].content, sections[i].fg, sections[i].bg)
 
 		if i == numSections-1 {
-			fmt.Println("")
+			section = fmt.Sprintf("%s\n", section)
 		} else {
-			fmt.Print(" ")
+			section = fmt.Sprintf("%s ", section)
 		}
+
+		fmt.Print(section)
 	}
 }

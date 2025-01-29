@@ -10,8 +10,8 @@ import (
 const bracketOpen = ""
 const bracketClose = ""
 
-func PrintSection(content string, fg structs.ColorRGB, bg structs.ColorRGB) {
-	fmt.Printf(
+func SprintSection(content string, fg structs.ColorRGB, bg structs.ColorRGB) string {
+	return fmt.Sprintf(
 		"%s%s%s",
 		color.RGB(bg.R, bg.G, bg.B).Sprint(bracketOpen),
 		color.RGB(fg.R, fg.G, fg.B).AddBgRGB(bg.R, bg.G, bg.B).Sprint(content),
