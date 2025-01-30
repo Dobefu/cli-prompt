@@ -5,7 +5,6 @@ import (
 
 	"github.com/Dobefu/cli-prompt/cmd/structs"
 	"github.com/Dobefu/cli-prompt/cmd/utils"
-	"golang.org/x/term"
 )
 
 type section struct {
@@ -15,7 +14,7 @@ type section struct {
 }
 
 func main() {
-	termWidth, _, err := term.GetSize(0)
+	termWidth, _, err := termGetSize(0)
 
 	if err != nil {
 		return
