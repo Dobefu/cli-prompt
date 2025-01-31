@@ -4,14 +4,10 @@ import (
 	"testing"
 
 	"github.com/Dobefu/cli-prompt/cmd/structs"
-	"github.com/fatih/color"
 	"github.com/stretchr/testify/assert"
 )
 
 func setupSprintSectionTest() (cleanup func()) {
-	// Force the use of colours.
-	color.NoColor = false
-
 	return func() {
 		// No cleanup required.
 	}
