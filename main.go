@@ -47,34 +47,14 @@ func main() {
 			exitCodeFg,
 			structs.ColorRGB{},
 		},
+		{
+			utils.GetTime(),
+			structs.ColorRGB{R: 0, G: 0, B: 0},
+			structs.ColorRGB{R: 200, G: 200, B: 200},
+		},
 	}
 
-	numSectionsLeft := len(sectionsLeft)
-	numCharsSectionsLeft := 0
-	numSectionsRight := len(sectionsRight)
-	numCharsSectionsRight := 0
-
-	for i := 0; i < numSectionsLeft; i++ {
-		_, sectionLen := utils.SprintSection(
-			sectionsLeft[i].content,
-			sectionsLeft[i].fg,
-			sectionsLeft[i].bg,
-		)
-
-		numCharsSectionsLeft += sectionLen
-	}
-
-	for i := 0; i < numSectionsRight; i++ {
-		_, sectionLen := utils.SprintSection(
-			sectionsRight[i].content,
-			sectionsRight[i].fg,
-			sectionsRight[i].bg,
-		)
-
-		numCharsSectionsRight += sectionLen
-	}
-
-	for i := 0; i < numSectionsLeft; i++ {
+	for i := 0; i < len(sectionsLeft); i++ {
 		section, sectionLen := utils.SprintSection(
 			sectionsLeft[i].content,
 			sectionsLeft[i].fg,
@@ -83,13 +63,56 @@ func main() {
 
 		charsRemaining -= sectionLen
 
-		if i != numSectionsLeft-1 {
+		if i != len(sectionsLeft)-1 {
 			section = fmt.Sprintf("%s ", section)
 			charsRemaining -= 1
 		}
 
 		fmt.Print(section)
 	}
+
+	alignCursorForSectionsRight(charsRemaining, sectionsRight)
+
+	for i := 0; i < len(sectionsRight); i++ {
+		section, sectionLen := utils.SprintSection(
+			sectionsRight[i].content,
+			sectionsRight[i].fg,
+			sectionsRight[i].bg,
+		)
+
+		charsRemaining -= sectionLen
+
+		if i != len(sectionsRight)-1 {
+			section = fmt.Sprintf("%s ", section)
+			charsRemaining -= 1
+		}
+
+		fmt.Print(section)
+	}
+
+	fmt.Println("$ ")
+}
+
+func getsectionsNumChars(sections []section) (numChars int) {
+	for i := 0; i < len(sections); i++ {
+		_, sectionLen := utils.SprintSection(
+			sections[i].content,
+			sections[i].fg,
+			sections[i].bg,
+		)
+
+		numChars += sectionLen
+
+		if i != len(sections)-1 {
+			numChars += 1
+		}
+	}
+
+	return numChars
+}
+
+func alignCursorForSectionsRight(charsRemaining int, sectionsRight []section) {
+	numCharsSectionsRight := getsectionsNumChars(sectionsRight)
 
 	if charsRemaining-numCharsSectionsRight < 0 {
 		for i := 0; i < (charsRemaining-numCharsSectionsRight)*-1; i++ {
@@ -101,22 +124,4 @@ func main() {
 		}
 	}
 
-	for i := 0; i < numSectionsRight; i++ {
-		section, sectionLen := utils.SprintSection(
-			sectionsRight[i].content,
-			sectionsRight[i].fg,
-			sectionsRight[i].bg,
-		)
-
-		charsRemaining -= sectionLen
-
-		if i != numSectionsRight-1 {
-			section = fmt.Sprintf("%s ", section)
-			charsRemaining -= 1
-		}
-
-		fmt.Print(section)
-	}
-
-	fmt.Println("$ ")
 }
