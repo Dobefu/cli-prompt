@@ -28,6 +28,17 @@ func TestMainSuccess(t *testing.T) {
 	assert.NotPanics(t, func() { main() })
 }
 
+func TestMainSmallTerm(t *testing.T) {
+	cleanup := setupMainTest()
+	defer cleanup()
+
+	termGetSize = func(fd int) (width, height int, err error) {
+		return 10, 10, nil
+	}
+
+	assert.NotPanics(t, func() { main() })
+}
+
 func TestMainErrNoTerm(t *testing.T) {
 	cleanup := setupMainTest()
 	defer cleanup()
