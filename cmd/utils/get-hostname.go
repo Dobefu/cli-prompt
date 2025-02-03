@@ -8,7 +8,7 @@ import (
 
 func GetHostname() string {
 	username := os.Getenv("LOGNAME")
-	hostname, err := os.Hostname()
+	hostname, err := osHostname()
 
 	if err != nil {
 		return username

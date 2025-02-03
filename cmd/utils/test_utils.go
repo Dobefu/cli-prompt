@@ -7,3 +7,4 @@ import (
 
 var runtimeGOOS = runtime.GOOS
 var osGetwd = os.Getwd
+var osHostname = os.Hostname
