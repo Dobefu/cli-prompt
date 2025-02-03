@@ -90,7 +90,16 @@ func main() {
 		fmt.Print(section)
 	}
 
-	fmt.Println("$ ")
+	fmt.Println("")
+
+	hostname, _ := utils.SprintSection(
+		utils.GetHostname(),
+		structs.ColorRGB{R: 0, G: 0, B: 0},
+		structs.ColorRGB{R: 0, G: 200, B: 0},
+	)
+
+	fmt.Print(hostname)
+	fmt.Print(" ")
 }
 
 func getsectionsNumChars(sections []section) (numChars int) {
