@@ -1,6 +1,6 @@
 module github.com/Dobefu/cli-prompt
 
-go 1.24.0
+go 1.25.5
 
 require (
 	github.com/fatih/color v1.18.0
