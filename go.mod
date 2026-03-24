@@ -3,7 +3,7 @@ module github.com/Dobefu/cli-prompt
 go 1.25.5
 
 require (
-	github.com/fatih/color v1.18.0
+	github.com/fatih/color v1.19.0
 	github.com/stretchr/testify v1.11.1
 	golang.org/x/term v0.41.0
 )
